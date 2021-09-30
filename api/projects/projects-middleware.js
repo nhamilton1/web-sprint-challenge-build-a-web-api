@@ -50,9 +50,40 @@ async function validateProject (req, res, next) {
   }
 }
 
+const putProjectSchema = yup.object().shape({
+  name: yup
+    .string()
+    .typeError('text must be a string')
+    .required('name is required'),
+  description: yup
+    .string()
+    .typeError('text must be a string')
+    .required('descript is required'),
+  completed: yup
+    .string()
+    .typeError('text must be a string')
+    .required('descript is required'),
+})
+
+async function validateProjectPut (req, res, next) {
+  try {
+    const validatedProject= await putProjectSchema.validate(
+      req.body,
+      { strict: false, stripUnknown: true }
+    )
+    req.description = validatedProject
+    next()
+  } catch (err) {
+    res.status(400).json({
+      message: "missing required field" 
+    })
+  }
+}
+
 module.exports = {
   logger,
   validateProjectId,
   validateProject,
+  validateProjectPut,
 
 }
