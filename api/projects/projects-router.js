@@ -34,4 +34,13 @@ router.put('/:id', validateProjectId, validateProjectPut, (req, res, next) => {
         .catch(next)
 })
 
+router.delete('/:id', validateProjectId, async (req, res, next) => {
+    try {
+        await Projects.remove(req.params.id)
+        res.json(req.projects)
+    } catch (err) {
+        next(err)
+    }
+})
+
 module.exports = router
