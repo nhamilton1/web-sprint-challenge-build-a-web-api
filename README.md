@@ -147,7 +147,34 @@ We have provided test data for all the resources.
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. The core features of Node.js and Express and why they are useful.
+
+  One of the core features of Node.js is that it uses JavaScript for both client and server. Javascript is also single-threaded, meaning it 
+  has one call stack and one memory heap. Futhermore, JavaScript is asynchronous, this allows to take advantage of the processors its running on.
+  Lastly, JS gives us the npm repo. 
+
+  Express is a light and unopiononated framework that works on top of Node.js. This allows lets the creation of web applciations and services easier.
+  Essentially, Express is just a Node.js module. Express is extensible, compatiable with middleware, and simple. 
+
 1. Understand and explain the use of Middleware.
+
+  Middleware anything you put in the middle of one layer of software and another. For example, Express middleware are fucntions that 
+  execute during the lifecycle of a request to the Express server. Middleware functions are functions that have access to the 
+  req object, res object, and the next middleware function in the apps request-response cycle. Middleware functions can execute code, 
+  change req and res objects, and call the next middleware function in the process. 
+
 1. The basic principles of the REST architectural style.
+
+  The REST architectural are recommendations and not the standard. When making RESTful APIs make sure to keep in mind that everything is a resource,
+  earch resource is accessible using the unqiue URI, resources can have many representations, communcation happens over HTTP, and resource management
+  happens using HTTP methods. 
+
 1. Understand and explain the use of Express Routers.
+
+  Express Routers can have its own Routing and Middleware. If we had an application that needed to deal with multiple endpoints it would require many lines
+  of code. You can then create a new file and make it cleaner. For example, we have actions nad projects, which each of them have multiple endpoints. 
+  We can seperate them into their own folders making it cleaner. We can easily add server.use('/insertendpointhere', exampleRoutes). We can also have a 
+  centeral router representing our api and import the routes. 
+
 1. Describe tooling used to manually test the correctness of an API.
+
+  

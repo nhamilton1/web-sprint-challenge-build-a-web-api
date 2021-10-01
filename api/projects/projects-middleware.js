@@ -60,9 +60,8 @@ const putProjectSchema = yup.object().shape({
     .typeError('text must be a string')
     .required('descript is required'),
   completed: yup
-    .string()
-    .typeError('text must be a string')
-    .required('descript is required'),
+    .bool()
+    .required()
 })
 
 async function validateProjectPut (req, res, next) {

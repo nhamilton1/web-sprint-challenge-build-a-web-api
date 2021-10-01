@@ -19,37 +19,39 @@ async function validateActionId(req, res, next) {
 }
 
 const actionSchema = yup.object().shape({
-    notes: yup
-      .string()
-      .typeError('text must be a string')
-      .required('notes is required'),
-    description: yup
-      .string()
-      .typeError('text must be a string')
-      .max(128)
-      .required('descript is required'),
-    project_id: yup
-        .number()
-        .typeError('must be a number')
-        .required('id is required')
+  notes: yup
+    .string()
+    .typeError('text must be a string')
+    .required('notes is required'),
+  description: yup
+    .string()
+    .typeError('text must be a string')
+    .max(128)
+    .required('descript is required'),
+  project_id: yup
+    .number()
+    .typeError('must be a number')
+    .required('id is required'),
+  completed: yup
+    .bool()
 })
 
-async function validateAction (req, res, next) {
-    try {
-      const validatedAction = await actionSchema.validate(
-        req.body,
-        { strict: false, stripUnknown: true }
-      )
-      req.action = validatedAction
-      next()
-    } catch (err) {
-      res.status(400).json({
-        message: "missing required field" 
-      })
-    }
+async function validateAction(req, res, next) {
+  try {
+    const validatedAction = await actionSchema.validate(
+      req.body,
+      { strict: false, stripUnknown: true }
+    )
+    req.action = validatedAction
+    next()
+  } catch (err) {
+    res.status(400).json({
+      message: "missing required field"
+    })
   }
+}
 
 module.exports = {
-    validateActionId,
-    validateAction,
+  validateActionId,
+  validateAction,
 }
