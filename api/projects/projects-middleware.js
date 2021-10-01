@@ -37,11 +37,11 @@ const projectSchema = yup.object().shape({
 
 async function validateProject (req, res, next) {
   try {
-    const validatedProject= await projectSchema.validate(
+    const validatedProject = await projectSchema.validate(
       req.body,
       { strict: false, stripUnknown: true }
     )
-    req.description = validatedProject
+    req.project = validatedProject
     next()
   } catch (err) {
     res.status(400).json({

@@ -26,6 +26,7 @@ const actionSchema = yup.object().shape({
     description: yup
       .string()
       .typeError('text must be a string')
+      .max(128)
       .required('descript is required'),
     project_id: yup
         .number()
@@ -35,11 +36,11 @@ const actionSchema = yup.object().shape({
 
 async function validateAction (req, res, next) {
     try {
-      const validatedAction= await actionSchema.validate(
+      const validatedAction = await actionSchema.validate(
         req.body,
         { strict: false, stripUnknown: true }
       )
-      req.description = validatedAction
+      req.action = validatedAction
       next()
     } catch (err) {
       res.status(400).json({
