@@ -178,3 +178,8 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 1. Describe tooling used to manually test the correctness of an API.
 
   
+  If I am understanding the question correctly it is asking what tools to use to manually test the correctness of the API?
+  The two tools I use is HTTPie and postman. For exmaple, Postman allow full control over making requests. We can change the HTTP method
+  used, add JSON data to the body, headers, examine the response and much more. I personally have been using HTTPie more since its right
+  in the terminal and I do not have to alt+tab out of my vscode. Can make simple requests just by doing: http get :3000/api/projects, the
+  port is what you set it to and you can change the HTTP method right in the terminal post, put, delete, get, and more. 
